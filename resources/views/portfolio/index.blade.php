@@ -37,7 +37,7 @@
 <div class="container text-center">
 	<div>
 		<h1>Hi! I'm Gerald Jay Pasia Timtiman.</h1><br>
-		<p class="pb-3">ASPIRING WEB DEVELOPER</p>
+		<p class="pb-3">ASPIRING FULL STACK WEB DEVELOPER</p>
 		<a href="https://www.fb.com/tim.timtiman/" class="text-decoration-none"><i class="fab fa-facebook-square fa-4x px-4"></i></a>
 		<a href="https://www.linkedin.com/in/g-timtiman/"><i class="fab fa-linkedin fa-4x px-4"></i></a>
 		<a href="https://github.com/gtim04/"><i class="fab fa-github-square fa-4x px-4"></i></a>
