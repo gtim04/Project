@@ -16,15 +16,15 @@
             <td>Options</td>
         </tr>
     </thead>
-    <tbody id="content">
+    <tbody id="dynamic">
         @foreach($records as $records)
         <tr>
-            <td><input type='text' value='{{$records->firstname}}' readonly></td>
-            <td><input type='text' value='{{$records->lastname}}' readonly></td>
-            <td><input type='text' value='{{$records->contact_number}}' readonly></td>
+            <td><input type='text' id='fname{{$records->id}}' class='tfield' value='{{$records->firstname}}' readonly></td>
+            <td><input type='text' id='lname{{$records->id}}' class='tfield' value='{{$records->lastname}}' readonly></td>
+            <td><input type='text' id='cnum{{$records->id}}' class='nfield' value='{{$records->contact_number}}' readonly></td>
             <td>
-                <input type='button' value='edit'>
-                <input type='button' value='delete'>
+                <input type='button' id='edit{{$records->id}}' value='edit' onclick='editBtn({{$records->id}})'>
+                <input type='button' id='delete{{$records->id}}' value='delete' onclick='deleteBtn({{$records->id}})'>
             </td>
         </tr>
         @endforeach

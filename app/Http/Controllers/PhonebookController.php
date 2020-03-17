@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Record;
+
 class PhonebookController extends Controller
 {
     /**
@@ -13,8 +15,9 @@ class PhonebookController extends Controller
      */
     public function index()
     {
+
         return view('phonebook.index', [
-            'records' => \App\Record::showRecords()
+            'records' => Record::select('id', 'firstname', 'lastname', 'contact_number')->get()
         ]);
         // $data = \App\Record::showRecord();
         // $data = \App\Record::where('firstname', 'Alberts')->get()->toArray();
@@ -34,9 +37,7 @@ class PhonebookController extends Controller
      */
     public function create()
     {
-        $data = \App\Record::showRecord();
-        dd($data);
-        // return $data;
+        //
     }
 
     /**
@@ -47,7 +48,15 @@ class PhonebookController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        // return $request->fname;
+        // return \App\Record::addRecords($request->fname, $request->lname, $request->cnum);
+        $data = new Record();
+        $data->firstname = $request->fname;
+        $data->lastname = $request->lname;
+        $data->contact_number = $request->cnum;
+        $data->save();
+        return 'saved';
     }
 
     /**
@@ -79,9 +88,14 @@ class PhonebookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        //
+        $data = Record::find($request->id);
+        $data->firstname = $request->fname;
+        $data->lastname = $request->lname;
+        $data->contact_number = $request->cnum;
+        $data->save();
+        return 'data saved';
     }
 
     /**
@@ -90,8 +104,11 @@ class PhonebookController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        //
+        $data = Record::find($request->id);
+        $data->delete();
+        return 'deleted';
+        // return \App\Record::deleteRecord($request->id);
     }
 }

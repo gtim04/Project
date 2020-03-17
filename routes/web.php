@@ -59,6 +59,12 @@ Route::get('/Portfolio', 'PortfolioController@index');
 
 Route::get('/Phonebook', 'PhonebookController@index');
 
-Route::get('/Phonebook/add', 'PhonebookController@create');
+Route::post('/Phonebook/add', 'PhonebookController@store');
 
-// Route::get('Phonebook', 'PhonebookController@index');
+Route::post('/Phonebook/delete', 'PhonebookController@destroy');
+
+Route::post('/Phonebook/edit', 'PhonebookController@update');
+
+Route::fallback(function () {
+    abort(404);
+});
